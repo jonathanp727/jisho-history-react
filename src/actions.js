@@ -16,19 +16,20 @@ export const recieveUser = json => ({
   user: {
     id: json._id,
     username: json.username,
-    words: json.words,
-  }
+    token: window.localStorage.getItem('userToken'),
+  },
+  words: json.words,
 });
 
-export function fetchUser(user) {
+export function fetchUser(userId, userToken) {
   return function (dispatch, getState) {
     dispatch(requestUser());
-    return fetch(`/api/user/${user.id}`, {
+    return fetch(`/api/user/${userId}`, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'x-access-token': user.token,
+        'x-access-token': userToken,
       }
     })
       .then(
