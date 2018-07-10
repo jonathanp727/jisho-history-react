@@ -11,12 +11,12 @@ export const requestUser = () => ({
 });
 
 export const RECIEVE_USER = 'RECIEVE_USER';
-export const recieveUser = json => ({
+export const recieveUser = (json, token) => ({
   type: RECIEVE_USER,
   user: {
     id: json._id,
     username: json.username,
-    token: window.localStorage.getItem('userToken'),
+    token: token,
   },
   words: json.words,
 });
@@ -38,7 +38,7 @@ export function fetchUser(userId, userToken) {
       )
       .then((json) => {
         if (json.type !== CONNECTION_FAILURE) {
-          dispatch(recieveUser(json));
+          dispatch(recieveUser(json, userToken));
         }
       });
   };
