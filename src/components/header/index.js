@@ -5,12 +5,10 @@ import UserHeader from './userheader';
 
 const Header = () => (
   <div>
-    <Route>
-      <Switch>
-        <Route exact path='/' component={LoginHeader}/>
-        <Route path='/' component={UserHeader}/>
-      </Switch>
-    </Route>
+    <Switch>
+      <Route exact path='/' component={LoginHeader}/>
+      <Route path='/' component={UserHeader}/>
+    </Switch>
   </div>
 )
 

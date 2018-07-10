@@ -1,4 +1,5 @@
 import fetch from 'cross-fetch';
+import { push } from 'connected-react-router';
 
 export const CONNECTION_FAILURE = 'CONNECTION_FAILURE';
 export const connectionFailure = () => ({
@@ -14,10 +15,11 @@ export const RECIEVE_LOGIN = 'RECIEVE_LOGIN';
 export const recieveLogin = json => ({
   type: RECIEVE_LOGIN,
   user: {
-    id: json._id,
-    username: json.username,
-    words: json.words,
-  }
+    id: json.user._id,
+    username: json.user.username,
+    token: json.token,
+  },
+  words: json.user.words,
 });
 
 export function login(username, password) {
@@ -40,9 +42,10 @@ export function login(username, password) {
       )
       .then((json) => {
         if (json.type !== CONNECTION_FAILURE) {
-          window.localStorage.setItem('userId', json.id);
+          window.localStorage.setItem('userId', json.user.id);
           window.localStorage.setItem('userToken', json.token);
           dispatch(recieveLogin(json));
+          dispatch(push({ pathname: '/home' }));
         }
       });
   };
