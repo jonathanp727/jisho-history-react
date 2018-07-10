@@ -2,11 +2,11 @@ import React from 'react';
 import Header from '../header';
 import Body from '../body';
 
-const Root = () => (
+const App = () => (
   <div>
     <Header />
     <Body />
   </div>
 )
 
-export default Root;
+export default App;
