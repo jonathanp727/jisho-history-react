@@ -24,7 +24,11 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "c": "^0.1.0",
+    "css-loader": "^1.0.0",
+    "extract-text-webpack-plugin": "^3.0.2",
     "react-hot-loader": "^4.3.3",
+    "style-loader": "^0.21.0",
     "webpack": "^4.14.0",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4"

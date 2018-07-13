@@ -9,6 +9,7 @@ import { reducer as formReducer } from 'redux-form';
 import { fetchUser } from './actions';
 import Root from './components/root';
 import reducer from './reducer';
+import './reset.css'
 
 const loggerMiddleware = createLogger();
 
