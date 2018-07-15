@@ -1,5 +1,13 @@
 .header {
     height: 3em;
-    background-color: grey;
+    background-color: #858e87;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    font-size: 2em;
+    margin-left: .3em;
 }

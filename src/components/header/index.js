@@ -6,6 +6,7 @@ import styles from './style.css';
 
 const Header = () => (
   <div className={styles.header}>
+    <h1 className={styles.title}>App</h1>
     <Switch>
       <Route exact path='/' component={LoginHeader}/>
       <Route path='/' component={UserHeader}/>

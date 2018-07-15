@@ -2,13 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { login } from './actions';
+import styles from './style.css';
 
 const LoginFormComponent = ({ handleSubmit, login }) => (
   <div>
-    <form onSubmit={handleSubmit(login)}>
-      <Field name='username' component='input' type='text' />
-      <Field name='password' component='input' type='password' />
-      <button name='login-button' type='submit' />
+    <form className={styles.form} onSubmit={handleSubmit(login)}>
+      <Field className={styles.input} name='username' component='input' type='text' autoComplete='off'/>
+      <Field className={styles.input} name='password' component='input' type='password' />
+      <button className={styles.button} name='login-button' type='submit'>login</button>
+      <button className={`${styles.button} ${styles.joinButton}`} name='join-button'>join</button>
     </form>
   </div>
 )
