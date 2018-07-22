@@ -4,7 +4,7 @@ import LoginHeader from './loginheader';
 import UserHeader from './userheader';
 import styles from './style.css';
 
-const Header = () => (
+const Header = ({ history }) => (
   <div className={styles.header}>
     <h1 className={styles.title}>App</h1>
     <Switch>

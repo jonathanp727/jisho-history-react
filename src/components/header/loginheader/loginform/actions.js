@@ -42,10 +42,11 @@ export function login(username, password) {
       )
       .then((json) => {
         if (json.type !== CONNECTION_FAILURE) {
-          window.localStorage.setItem('userId', json.user.id);
-          window.localStorage.setItem('userToken', json.token);
+          console.log(json);
+          localStorage.setItem('jisho-history-userId', json.user._id);
+          localStorage.setItem('jisho-history-userToken', json.token);
           dispatch(recieveLogin(json));
-          dispatch(push({ pathname: '/home' }));
+          dispatch(push('/home'));
         }
       });
   };

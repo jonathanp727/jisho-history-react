@@ -30,15 +30,18 @@ const store = createStore(
 );
 
 // If already logged in, go to user homepage
-const userId = window.localStorage.getItem('userId');
+const userId = localStorage.getItem('jisho-history-userId');
 if (userId != null) {
-  store.dispatch(fetchUser(userId, window.localStorage.getItem('userToken')));
-  store.dispatch(push({ pathname: '/home' }));
+  store.dispatch(fetchUser(userId, localStorage.getItem('jisho-history-userToken')));
 }
 
 ReactDOM.render(
   <Root store={store} history={history} />,
   document.getElementById('app')
 );
+
+if (userId != null) {
+  store.dispatch(push('/home'));
+}
 
 module.hot.accept();
