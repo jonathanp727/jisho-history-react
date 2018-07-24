@@ -38,6 +38,9 @@ export function fetchUser(userId, userToken) {
       )
       .then((json) => {
         if (json.type !== CONNECTION_FAILURE) {
+          json.words.sort((a, b) => {
+            return a.latestIncrement - b.latestIncrement;
+          });
           dispatch(recieveUser(json, userToken));
         }
       });

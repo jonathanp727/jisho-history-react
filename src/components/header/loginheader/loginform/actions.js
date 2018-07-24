@@ -45,6 +45,11 @@ export function login(username, password) {
           console.log(json);
           localStorage.setItem('jisho-history-userId', json.user._id);
           localStorage.setItem('jisho-history-userToken', json.token);
+
+          json.user.words.sort((a, b) => {
+            return a.latestIncrement - b.latestIncrement;
+          });
+          
           dispatch(recieveLogin(json));
           dispatch(push('/home'));
         }
