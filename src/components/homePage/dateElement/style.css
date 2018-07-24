@@ -1,0 +1,11 @@
+.dateEl {
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 2em;
+}
+
+.date {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 2em;
+}
