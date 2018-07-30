@@ -4,10 +4,13 @@ import styles from './style.css'
 
 const DateElement = ({ date, words }) => (
   <div className={styles.dateEl}>
-    <h2 className={styles.date}>{date}</h2>
-      { (() => {
-          words.filter(word => word.latestIncrement === date);
-          return words.map(word => (<DateWordElement key={word.word} word={word} />));
+    <h2 className={styles.date}>{date.toDateString().substring(0,10)}</h2>
+      {
+        (() => {
+          let filtered = words.filter(word => {
+            return new Date(word.latestIncrement).toDateString() === date.toDateString();
+          });
+          return filtered.map(word => (<DateWordElement key={word.word} word={word} />));
         })()
       }
   </div>

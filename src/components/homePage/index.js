@@ -8,12 +8,13 @@ const HomePageComponent = ({ words }) => (
   <div className={styles.homePage}>
     {
       (() => {
-        let curDate = 0;
+        let curDate = new Date(0);
         return words.map(word => {
-          if(word.latestIncrement === curDate)
+          let date = new Date(word.latestIncrement);
+          if(date.toDateString() === curDate.toDateString()) {
             return null;
-          else {
-            curDate = word.latestIncrement;
+          } else {
+            curDate = date;
             return <DateElement date={curDate} words={words} />
           }
         })
