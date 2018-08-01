@@ -15,7 +15,7 @@ const HomePageComponent = ({ words }) => (
             return null;
           } else {
             curDate = date;
-            return <DateElement date={curDate} words={words} />
+            return <DateElement key={curDate} date={curDate} words={words} />
           }
         })
       })()
