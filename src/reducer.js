@@ -38,6 +38,8 @@ function reducer(state = defaultState, action) {
     case RECIEVE_LOGIN:
       return Object.assign({}, state, { request_login: 'success', user: action.user, words: action.words });
     case LOGOUT:
+      localStorage.removeItem('jisho-history-userId');
+      localStorage.removeItem('jisho-history-userToken');
       return Object.assign({}, state, { user: null });
     case OPEN_WORD_ELEMENT:
       if(state.curWord === action.word)
