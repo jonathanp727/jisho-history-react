@@ -47,7 +47,7 @@ export function login(username, password) {
           localStorage.setItem('jisho-history-userToken', json.token);
 
           json.user.words.sort((a, b) => {
-            return a.latestIncrement - b.latestIncrement;
+            return b.latestIncrement - a.latestIncrement;
           });
           
           dispatch(recieveLogin(json));

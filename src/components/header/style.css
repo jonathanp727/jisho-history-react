@@ -1,10 +1,13 @@
 .header {
+    position: relative;
     height: 3em;
-    background-color: #858e87;
+    background-color: #f1f1f1; /* #858e87;*/
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 10px 2px 15px rgba(0,0,0,.4), -10px 2px 15px rgba(0,0,0,.4);
+    z-index: 100;
 }
 
 .title {

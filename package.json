@@ -30,6 +30,7 @@
     "c": "^0.1.0",
     "css-loader": "^1.0.0",
     "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.11",
     "react-hot-loader": "^4.3.3",
     "style-loader": "^0.21.0",
     "webpack": "^4.14.0",
