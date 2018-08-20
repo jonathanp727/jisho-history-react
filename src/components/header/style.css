@@ -12,5 +12,8 @@
 
 .title {
     font-size: 2em;
-    margin-left: .3em;
+    margin-left: .6em;
+    font-family: 'PT Sans', sans-serif;
+    text-shadow: 1px 1px 5px rgba(0,0,0,.5);
+    color: #464646;
 }

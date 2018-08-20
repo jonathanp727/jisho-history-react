@@ -6,7 +6,7 @@ import styles from './style.css';
 
 const Header = ({ history }) => (
   <div className={styles.header}>
-    <h1 className={styles.title}>App</h1>
+    <h1 className={styles.title}>Jisho History</h1>
     <Switch>
       <Route exact path='/' component={LoginHeader}/>
       <Route path='/' component={UserHeader}/>

@@ -32,7 +32,8 @@
 
 .button {
     font-size: 1.1em;
-    background-color: #ecab56;
+    background-color: #8abd83;
+    /*background-color: #ecab56; // When join button pressent*/ 
     height: 1.8em;
     padding: 0 1em;
     transition: box-shadow .3s;

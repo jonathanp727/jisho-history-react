@@ -10,7 +10,6 @@ const LoginFormComponent = ({ handleSubmit, login }) => (
       <Field className={styles.input} name='username' component='input' type='text' autoComplete='off'/>
       <Field className={styles.input} name='password' component='input' type='password' />
       <button className={styles.button} name='login-button' type='submit'>login</button>
-      <button className={`${styles.button} ${styles.joinButton}`} name='join-button'>join</button>
     </form>
   </div>
 )
@@ -25,3 +24,5 @@ const LoginForm = connect(
 )(reduxForm({ form: 'login' })(LoginFormComponent));
 
 export default LoginForm;
+
+//      <button className={`${styles.button} ${styles.joinButton}`} name='join-button'>join</button>
