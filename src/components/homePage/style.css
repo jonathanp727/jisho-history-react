@@ -3,3 +3,22 @@
     justify-content: center;
     flex-wrap: wrap;
 }
+
+.emptyCont {
+    margin-top: 5em;
+    background-color: #f1f1f1;
+    padding: 1em;
+    box-shadow: 0 0 10px rgba(0,0,0,.5);
+}
+
+.emptyHeader {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 3em;
+    color: #d28585;
+}
+
+.emptyDesc {
+    margin-top: 1em;
+    font-family: 'Roboto Slab', serif;
+    color: #4c4c4c;
+}
