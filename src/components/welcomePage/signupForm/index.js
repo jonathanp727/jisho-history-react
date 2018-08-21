@@ -8,8 +8,16 @@ import styles from './style.css';
 const SignupFormComponent = ({ handleSubmit, join }) => (
   <div className={styles.cont}>
     <form className={styles.form} onSubmit={handleSubmit(join)}>
-      <Field className={styles.input} name='username' component='input' type='text' autoComplete='off'/>
-      <Field className={styles.input} name='password' component='input' type='password' />
+      <div className={styles.inputCont}>
+        <label className={styles.label}>Username
+          <Field className={styles.input} name='username' component='input' type='text' autoComplete='off'/>
+        </label>
+      </div>
+      <div className={styles.inputCont}>
+        <label className={styles.label}>Password
+          <Field className={styles.input} name='password' component='input' type='password' />
+        </label>
+      </div>
       <button className={styles.button} name='login-button' type='submit'>sign up</button>
     </form>
   </div>

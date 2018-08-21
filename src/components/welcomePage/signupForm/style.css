@@ -1,0 +1,76 @@
+.cont {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form {
+    padding: 1em;
+    background-color: #f1f1f1;
+    box-shadow: 0 0 10px rgba(0,0,0,.5);
+    border-radius: 4px;
+    border-top: .5em #545454 solid;
+}
+
+.inputCont {
+    margin-bottom: .5em;
+}
+
+.label {
+    font-family: 'PT Sans', sans-serif;
+}
+
+.input, .button{
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+}
+
+.input {
+    display: block;
+    box-sizing: border-box;
+    color: #494949;
+    font-size: 1.3em;
+    height: 1.5em;
+    width: 10em;
+    padding-left: .7em;
+    border: 2px #dddddd solid;
+    transition: background-color .5s;
+}
+
+.input:hover {
+    background-color: #fcfcfc;
+}
+.input:focus {
+    background-color: #f2f2f2;
+}
+
+.button {
+    font-size: 1.1em;
+    background-color: #ecab56;
+    /*background-color: #ecab56; // When join button pressent*/ 
+    height: 1.8em;
+    transition: box-shadow .3s;
+
+    /* animation taken from hover.css */
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow;
+    transition-property: box-shadow;
+    float: right;
+}
+
+.button:hover, .button:focus {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+}
