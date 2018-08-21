@@ -2,7 +2,6 @@ import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 import LoginHeader from './loginheader';
 import UserHeader from './userheader';
-import SignupHeader from './signupHeader';
 import styles from './style.css';
 
 const Header = ({ history }) => (

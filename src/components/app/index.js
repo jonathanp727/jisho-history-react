@@ -9,6 +9,7 @@ const App = () => (
     <Header />
     <Switch>
       <Route exact path='/' component={WelcomePage}/>
+      <Route path='/signup' component={WelcomePage}/>
       <Route path='/home' component={HomePage}/>
     </Switch>
   </div>

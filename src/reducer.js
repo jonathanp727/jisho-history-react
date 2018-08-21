@@ -17,9 +17,15 @@ import {
   OPEN_WORD_ELEMENT,
 } from './components/homePage/dateElement/dateWordElement/actions.js';
 
+import {
+  REQUEST_JOIN,
+  RECIEVE_JOIN,
+} from './components/welcomePage/signupForm/actions.js';
+
 const defaultState = {
   request_user: 'pending',
   request_login: 'pending',
+  request_join: 'pending',
   user: null,
   words: [],
   curWord: null
@@ -46,6 +52,10 @@ function reducer(state = defaultState, action) {
         return Object.assign({}, state, { curWord: null });
       else
         return Object.assign({}, state, { curWord: action.word });
+    case REQUEST_JOIN:
+      return Object.assign({}, state, { request_join: 'ongoing' });
+    case RECIEVE_JOIN:
+      return Object.assign({}, state, { request_Join: 'success', user: action.user, words: [] });
     default:
       return state
   }
