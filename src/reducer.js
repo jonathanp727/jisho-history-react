@@ -22,13 +22,19 @@ import {
   RECIEVE_JOIN,
 } from './components/welcomePage/signupForm/actions.js';
 
+import {
+  SORT_BY_NEW,
+  SORT_BY_TOP,
+} from './components/homePage/actions.js';
+
 const defaultState = {
   request_user: 'pending',
   request_login: 'pending',
   request_join: 'pending',
   user: null,
   words: [],
-  curWord: null
+  curWord: null,
+  isSortedNew: true,
 }
 
 function reducer(state = defaultState, action) {
@@ -56,6 +62,15 @@ function reducer(state = defaultState, action) {
       return Object.assign({}, state, { request_join: 'ongoing' });
     case RECIEVE_JOIN:
       return Object.assign({}, state, { request_Join: 'success', user: action.user, words: [] });
+    case SORT_BY_NEW:
+      state.words.sort((a, b) => {
+        return b.latestIncrement - a.latestIncrement;
+      });
+      return Object.assign({}, state, { isSortedNew: true })
+    case SORT_BY_TOP:
+      state.words.sort((a, b) => {
+        return a.count - b.count;
+      });
     default:
       return state
   }

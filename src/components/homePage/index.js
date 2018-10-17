@@ -2,10 +2,29 @@ import React from 'react';
 import { connect } from 'react-redux';
 import WordElement from './wordElement';
 import DateElement from './dateElement';
+
+import { sortByNew, sortByTop } from './actions';
+
 import styles from './style.css'
 
-const HomePageComponent = ({ words }) => (
+const HomePageComponent = ({ words, isSortedNew, sortByNew, sortByTop }) => (
   <div className={styles.homePage}>
+    <div className={styles.optionsCont}>
+      <ul className={styles.displayOptionsCont}>
+        <li>
+          <button
+            className={[isSortedNew ? styles.activeButton : null, styles.leftButton].join(' ')}
+            onClick={sortByNew}
+            >New</button>
+        </li>
+        <li>
+          <button
+            className={[!isSortedNew ? styles.activeButton : null, styles.rightButton].join(' ')}
+            onClick={sortByTop}
+            >Top</button>
+        </li>
+      </ul>
+    </div>
     {
       (() => {
         if(words.length === 0) {
@@ -33,10 +52,13 @@ const HomePageComponent = ({ words }) => (
 
 const mapStateToProps = state => ({
   words: state.main.words,
+  hi: state.main.user,
+  isSortedNew: state.main.isSortedNew,
 });
 
 const mapDispatchToProps = dispatch => ({
-
+  sortByNew: () => { dispatch(sortByNew()) },
+  sortByTop: () => { dispatch(sortByTop()) },
 });
 
 const HomePage = connect(
