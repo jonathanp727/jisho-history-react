@@ -66,11 +66,12 @@ function reducer(state = defaultState, action) {
       state.words.sort((a, b) => {
         return b.latestIncrement - a.latestIncrement;
       });
-      return Object.assign({}, state, { isSortedNew: true })
+      return Object.assign({}, state, { isSortedNew: true });
     case SORT_BY_TOP:
       state.words.sort((a, b) => {
         return a.count - b.count;
       });
+      return Object.assign({}, state, { isSortedNew: false });
     default:
       return state
   }
