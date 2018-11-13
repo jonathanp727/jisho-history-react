@@ -1,0 +1,11 @@
+.drawer {
+/*    position: absolute;
+    top: -3em;
+    z-index: 100;*/
+}
+
+.content {
+    height: 69vh;
+    width: 10vw;
+    background-color: green;
+}

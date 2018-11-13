@@ -1,8 +1,10 @@
 import React from 'react';
-import Header from './components/Header';
 import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import Welcome from './scenes/Welcome';
-import HomePage from './scenes/Home';
+import Home from './scenes/Home';
+import Header from './components/Header';
 
 const App = () => (
   <div>
@@ -10,9 +12,13 @@ const App = () => (
     <Switch>
       <Route exact path='/' component={Welcome}/>
       <Route path='/signup' component={Welcome}/>
-      <Route path='/home' component={HomePage}/>
+      <Route path='/home' component={Home}/>
     </Switch>
   </div>
 )
+
+const mapStateToProps = state => ({
+  user: state.api.user,
+});
 
 export default App;
