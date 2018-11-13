@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import WordElement from './wordElement';
 import DateElement from './dateElement';
 
-import { sortByNew, sortByTop } from './actions';
+import { sortByNew, sortByTop } from '../../services/ui/actions';
 
 import styles from './style.css'
 
@@ -51,9 +51,8 @@ const HomePageComponent = ({ words, isSortedNew, sortByNew, sortByTop }) => (
 )
 
 const mapStateToProps = state => ({
-  words: state.main.words,
-  hi: state.main.user,
-  isSortedNew: state.main.isSortedNew,
+  words: state.api.words,
+  isSortedNew: state.ui.isSortedNew,
 });
 
 const mapDispatchToProps = dispatch => ({

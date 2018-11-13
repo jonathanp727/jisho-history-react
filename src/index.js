@@ -1,21 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
-import { createBrowserHistory } from 'history';
-import { connectRouter, routerMiddleware, push } from 'connected-react-router';
+import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { reducer as formReducer } from 'redux-form';
-import { fetchUser } from './actions';
-import Root from './components/root';
-import reducer from './reducer';
+import { createBrowserHistory } from 'history';
+import { connectRouter, routerMiddleware, push, ConnectedRouter } from 'connected-react-router';
+
+import App from './App';
+import { fetchUser } from './services/api/actions';
+import uiReducer from './services/ui/reducer';
+import apiReducer from './services/api/reducer';
 import './reset.css'
 
 const loggerMiddleware = createLogger();
 
 const rootReducer = combineReducers({
   form: formReducer,
-  main: reducer,
+  ui: uiReducer,
+  api: apiReducer,
 });
 
 const history = createBrowserHistory();
@@ -36,7 +40,11 @@ if (userId != null) {
 }
 
 ReactDOM.render(
-  <Root store={store} history={history} />,
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <App userId={userId} />
+    </ConnectedRouter>
+  </Provider>,
   document.getElementById('app')
 );
 

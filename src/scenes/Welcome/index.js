@@ -5,7 +5,7 @@ import SignupForm from './signupForm';
 import Introduction from './introduction';
 import styles from './style.css';
 
-const WelcomePage = () => (
+const Welcome = () => (
   <div className={styles.background}>
     <div className={styles.imageFader}>
       <Switch>
@@ -16,4 +16,4 @@ const WelcomePage = () => (
   </div>
 )
 
-export default WelcomePage;
+export default Welcome;

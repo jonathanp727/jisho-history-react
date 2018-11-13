@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { logout } from './actions';
 import { push } from 'connected-react-router';
+import { logout } from '../../../services/api/actions';
 import styles from './style.css'
 
 const UserHeaderComponent = ({ logout }) => (
@@ -15,7 +15,7 @@ const mapDispatchToProps = dispatch => ({
     window.localStorage.removeItem('userId');
     window.localStorage.removeItem('userToken');
     dispatch(logout());
-    dispatch(push({ pathname: '/' }));
+    dispatch(push('/'));
   },
 });
 

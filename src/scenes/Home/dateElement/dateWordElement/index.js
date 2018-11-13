@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import WordDataPanel from './wordDataPanel';
-import { openWordElement } from './actions';
+import { openWordElement } from '../../../../services/ui/actions';
 import styles from './style.css';
 
 const DateWordElementComponent = ({ word, curWord, openWord }) => (
@@ -18,7 +18,7 @@ const DateWordElementComponent = ({ word, curWord, openWord }) => (
 )
 
 const mapStateToProps = state => ({
-  curWord: state.main.curWord,
+  curWord: state.ui.curWord,
 });
 
 const mapDispatchToProps = dispatch => ({

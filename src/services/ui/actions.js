@@ -1,3 +1,9 @@
+export const OPEN_WORD_ELEMENT = 'OPEN_WORD_ELEMENT';
+export const openWordElement = ( word ) => ({
+  type: OPEN_WORD_ELEMENT,
+  word, 
+});
+
 export const SORT_BY_NEW = 'SORT_BY_NEW';
 export const sortByNew = () => ({
   type: SORT_BY_NEW,
