@@ -18,6 +18,11 @@ import {
   RECIEVE_JOIN,
 } from './actions';
 
+import {
+  SORT_BY_NEW,
+  SORT_BY_TOP
+} from '../ui/actions';
+
 const defaultState = {
   requestUser: 'pending',
   requestLogin: 'pending',
@@ -46,6 +51,16 @@ function reducer(state = defaultState, action) {
       return Object.assign({}, state, { requestJoin: 'ongoing' });
     case RECIEVE_JOIN:
       return Object.assign({}, state, { requestJoin: 'success', user: action.user, words: [] });
+    case SORT_BY_NEW:
+      state.words.sort((a, b) => {
+        return b.latestIncrement - a.latestIncrement;
+      });
+      return Object.assign({}, state);
+    case SORT_BY_TOP:
+      state.words.sort((a, b) => {
+        return b.count - a.count;
+      });
+      return Object.assign({}, state);
     default:
       return state;
   }

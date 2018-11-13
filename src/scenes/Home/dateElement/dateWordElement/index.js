@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import WordDataPanel from './wordDataPanel';
+import WordDataPanel from './WordDataPanel';
 import { openWordElement } from '../../../../services/ui/actions';
 import styles from './style.css';
 

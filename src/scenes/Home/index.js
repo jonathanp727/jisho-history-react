@@ -1,30 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import WordElement from './wordElement';
-import DateElement from './dateElement';
 
-import { sortByNew, sortByTop } from '../../services/ui/actions';
+import OptionsBar from './components/OptionsBar';
+import DateElement from './DateElement';
+import TopList from './TopList';
 
 import styles from './style.css'
 
-const HomePageComponent = ({ words, isSortedNew, sortByNew, sortByTop }) => (
+const Home = ({ words, isSortedNew }) => (
   <div className={styles.homePage}>
-    <div className={styles.optionsCont}>
-      <ul className={styles.displayOptionsCont}>
-        <li>
-          <button
-            className={[isSortedNew ? styles.activeButton : null, styles.leftButton].join(' ')}
-            onClick={sortByNew}
-            >New</button>
-        </li>
-        <li>
-          <button
-            className={[!isSortedNew ? styles.activeButton : null, styles.rightButton].join(' ')}
-            onClick={sortByTop}
-            >Top</button>
-        </li>
-      </ul>
-    </div>
+    <OptionsBar />
     {
       (() => {
         if(words.length === 0) {
@@ -35,16 +20,20 @@ const HomePageComponent = ({ words, isSortedNew, sortByNew, sortByTop }) => (
             </div>
           )
         }
-        let curDate = new Date(0);
-        return words.map(word => {
-          let date = new Date(word.latestIncrement);
-          if(date.toDateString() === curDate.toDateString()) {
-            return null;
-          } else {
-            curDate = date;
-            return <DateElement key={curDate} date={curDate} words={words} />
-          }
-        })
+        if(isSortedNew) {
+          let curDate = new Date(0);
+          return words.map(word => {
+            let date = new Date(word.latestIncrement);
+            if(date.toDateString() === curDate.toDateString()) {
+              return null;
+            } else {
+              curDate = date;
+              return <DateElement key={curDate} date={curDate} words={words} />
+            }
+          })
+        } else {
+          return (<TopList words={words} />);
+        }
       })()
     }
   </div>
@@ -55,15 +44,4 @@ const mapStateToProps = state => ({
   isSortedNew: state.ui.isSortedNew,
 });
 
-const mapDispatchToProps = dispatch => ({
-  sortByNew: () => { dispatch(sortByNew()) },
-  sortByTop: () => { dispatch(sortByTop()) },
-});
-
-const HomePage = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(HomePageComponent);
-
-
-export default HomePage;
+export default connect(mapStateToProps)(Home);

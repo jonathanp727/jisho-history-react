@@ -1,5 +1,5 @@
 import React from 'react';
-import DateWordElement from './dateWordElement';
+import DateWordElement from './DateWordElement';
 import styles from './style.css'
 
 const DateElement = ({ date, words }) => (
