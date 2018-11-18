@@ -39,6 +39,9 @@ if (userId != null) {
   store.dispatch(fetchUser(userId, localStorage.getItem('jisho-history-userToken')));
 }
 
+// Gets rid of material-ui typography deprecation warning
+window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
+
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
@@ -48,7 +51,8 @@ ReactDOM.render(
   document.getElementById('app')
 );
 
-if (userId != null) {
+// Automatically reroute user to home from main page if logged in
+if (userId != null && store.getState().router.location.pathname == '/') {
   store.dispatch(push('/home'));
 }
 
