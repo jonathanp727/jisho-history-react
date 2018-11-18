@@ -1,0 +1,77 @@
+.addWordPage {
+    position: absolute;
+    top: 3em;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.smallCont {
+    box-shadow: 0 0 10px rgba(0,0,0,.5);
+    border-radius: 0 0 4px 4px;
+    transition: all .5s;
+    width: 35vw;
+    height: 40vh;
+}
+
+.bigCont {
+    box-shadow: 0 0 10px rgba(0,0,0,.5);
+    border-radius: 0 0 4px 4px;
+    transition: all .5s;
+    width: 60vw;
+    height: 70vh;
+}
+
+.tab {
+    position: relative;
+    width: 50%;
+    border: none;
+    padding: 1em 0;
+    outline: none;
+
+    cursor: pointer;
+}
+
+.activeTabLeft {
+    -webkit-box-shadow: 2px 0 12px -.3px rgba(0,0,0,.3);
+    box-shadow: 2px 0 12px -.3px rgba(0,0,0,.3);
+    z-index: 10;
+    background-color: #8abd83;
+}
+
+.activeTabRight {
+    -webkit-box-shadow: 0px 0 12px -.3px rgba(0,0,0,.3);
+    box-shadow: 0px 0 12px -.3px rgba(0,0,0,.3);
+    z-index: 10;
+    background-color: #8abd83;
+}
+
+.passiveTab {
+    z-index: 1;
+    background-color: #d6e2d5;
+    transition: .3s background-color ease-out;
+}
+.passiveTab:hover {
+    background-color: #a7bfa5;
+}
+
+.tabBottomShadow {
+    position: relative;
+    z-index: 5;
+    box-shadow: 0 -2px 12px rgba(0,0,0,.3);
+    width: 50%;
+    padding-top: 1em;
+}
+.bottomShadowRight {
+    left: 50%;
+}
+
+.formCont {
+    padding: 1em;
+    position: relative;
+    top: -1em;
+    z-index: 20;
+    background-color: white;
+}

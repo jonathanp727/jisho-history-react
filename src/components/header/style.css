@@ -30,3 +30,8 @@
 .title:hover, .title:focus {
     text-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
 }
+
+.titleCont {
+    display: flex;
+    align-items: center;
+}

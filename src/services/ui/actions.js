@@ -23,3 +23,13 @@ export const CLOSE_NAV_DRAWER = 'CLOSE_NAV_DRAWER';
 export const closeNavDrawer = () => ({
   type: CLOSE_NAV_DRAWER,
 });
+
+export const OPEN_MANUAL_TAB = 'OPEN_MANUAL_TAB';
+export const openManualTab = () => ({
+  type: OPEN_MANUAL_TAB,
+});
+
+export const OPEN_PHOTO_TAB = 'OPEN_PHOTO_TAB';
+export const openPhotoTab = () => ({
+  type: OPEN_PHOTO_TAB,
+});

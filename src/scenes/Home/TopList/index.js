@@ -7,7 +7,7 @@ const TopList = ({ words }) => (
   <div className={styles.cont}>
     {
       words.map((word) => (
-        <DateWordElement key={word.kanji} word={word} />
+        <DateWordElement key={word.word} word={word} />
       ))
     }
   </div>

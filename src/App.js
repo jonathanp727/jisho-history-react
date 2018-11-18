@@ -4,15 +4,20 @@ import { connect } from 'react-redux';
 
 import Welcome from './scenes/Welcome';
 import Home from './scenes/Home';
+import AddWord from './scenes/AddWord';
 import Header from './components/Header';
+import NavDrawer from './components/NavDrawer';
+import Test from './test';
 
 const App = () => (
   <div>
     <Header />
+    <NavDrawer />
     <Switch>
       <Route exact path='/' component={Welcome}/>
       <Route path='/signup' component={Welcome}/>
       <Route path='/home' component={Home}/>
+      <Route path='/new' component={AddWord}/>
     </Switch>
   </div>
 )

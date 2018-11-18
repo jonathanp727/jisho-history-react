@@ -8,7 +8,7 @@ import MenuButton from './MenuButton';
 
 const Header = ({ history }) => (
   <div className={styles.header}>
-    <div>
+    <div className={styles.titleCont}>
       <MenuButton />
       <Link className={styles.title} to='/'>Jisho History</Link>
     </div>

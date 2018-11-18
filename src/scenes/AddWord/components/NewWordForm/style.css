@@ -1,20 +1,5 @@
-.cont {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    z-index: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .form {
-    padding: 1em;
-    background-color: #f1f1f1;
-    box-shadow: 0 0 10px rgba(0,0,0,.5);
-    border-radius: 4px;
-    border-top: .5em #545454 solid;
+
 }
 
 .inputCont {
@@ -23,6 +8,8 @@
 
 .label {
     font-family: 'PT Sans', sans-serif;
+    display: block;
+    margin-top: .3em;
 }
 
 .input, .button{
@@ -30,6 +17,7 @@
     border: none;
     outline: none;
     border-radius: 3px;
+    margin-top: .3em;
 }
 
 .input {
@@ -51,6 +39,21 @@
     background-color: #f2f2f2;
 }
 
+.checkboxCont {
+    margin-top: 1em;
+}
+
+.checkbox {
+    display: inline-block;
+    margin-left: 2em;
+}
+
+.sentenceInput {
+    width: 20em;
+    resize: none;
+    height: 3em;
+}
+
 .button {
     font-size: 1.1em;
     background-color: #ecab56;
@@ -69,6 +72,7 @@
     -webkit-transition-property: box-shadow;
     transition-property: box-shadow;
     float: right;
+    margin-bottom: .4em;
 }
 
 .button:hover, .button:focus {

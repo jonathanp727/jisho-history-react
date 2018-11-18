@@ -1,12 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Drawer } from 'antd';
+import Drawer from '@material-ui/core/Drawer';
 
+import NavMenu from './NavMenu';
+import { closeNavDrawer } from '../../services/ui/actions';
 import styles from './style.css';
 
-const NavDrawer = ({ navDrawerOpen }) => (
-  <Drawer visible={navDrawerOpen} className={styles.drawer}>
-    <div className={styles.content}/>
+const NavDrawer = ({ navDrawerOpen, closeNavDrawer }) => (
+  <Drawer
+    open={navDrawerOpen}
+    onClose={() => closeNavDrawer()}
+  >
+    <NavMenu />
   </Drawer>
 );
 
@@ -14,4 +19,8 @@ const mapStateToProps = state => ({
   navDrawerOpen: state.ui.navDrawerOpen,
 });
 
-export default connect(mapStateToProps)(NavDrawer);
+const mapDispatchToProps = dispatch => ({
+  closeNavDrawer: () => dispatch(closeNavDrawer()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavDrawer);
