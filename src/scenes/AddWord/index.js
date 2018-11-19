@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import Button from '../../components/Button';
 import NewWordForm from './components/NewWordForm';
 import UploadPhotoForm from './components/UploadPhotoForm';
 import PostParseForm from './components/PostParseForm';
@@ -25,7 +26,7 @@ const AddWord = ({ usePhoto, openManual, openPhoto, imageParsing }) => (
       <div className={styles.formCont}>
         { !usePhoto && <NewWordForm /> }
         { (usePhoto && !imageParsing) && <UploadPhotoForm /> }
-        { imageParsing && <PostParseForm /> }
+        { (usePhoto && imageParsing) && <PostParseForm /> }
       </div>
     </div>
   </div>

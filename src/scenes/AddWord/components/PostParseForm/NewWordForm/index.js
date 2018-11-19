@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
+import { addWord, deleteImageParsing } from '../../../../../services/api/actions';
 import styles from './style.css';
 
 class NewWordForm extends React.Component {
@@ -45,6 +47,9 @@ class NewWordForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.props.addWord(this.state.word, this.state.sentence, this.state.addLookup);
+    this.props.deleteImageParsing();
+    this.props.history.push('/home');
   }
 
   render() {
@@ -75,7 +80,7 @@ class NewWordForm extends React.Component {
                 onChange={this.handleChange('addLookup')}/>
             </label>
           </div>
-          <button className={styles.button}>
+          <button className={styles.button} onClick={(e) => this.handleSubmit(e)}>
             add
           </button>
         </form>
@@ -89,4 +94,9 @@ const mapStateToProps = state => ({
   tokenIndex: state.ui.tokenIndex,
 });
 
-export default connect(mapStateToProps, null)(NewWordForm);
+const mapDispatchToProps = dispatch => ({
+  addWord: (word, sentence, addLookup) => dispatch(addWord(word, sentence, addLookup)),
+  deleteImageParsing: () => dispatch(deleteImageParsing()),
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewWordForm));

@@ -4,6 +4,15 @@
     flex-wrap: wrap;
 }
 
+.button {
+    font-size: .8em;
+    color: #8c8c8c;
+}
+
+.buttonCont {
+    width: 100%;
+}
+
 .tokensCont {
     display: flex;
     flex-wrap: wrap;

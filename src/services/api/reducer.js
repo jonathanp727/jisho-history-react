@@ -9,6 +9,8 @@ import {
   RECIEVE_JOIN,
   REQUEST_PARSE_IMAGE,
   RECIEVE_PARSE_IMAGE,
+  DELETE_IMAGE_PARSING,
+  RECIEVE_ADD_WORD,
 } from './actions';
 
 import {
@@ -41,7 +43,7 @@ function reducer(state = defaultState, action) {
     case LOGOUT:
       localStorage.removeItem('jisho-history-userId');
       localStorage.removeItem('jisho-history-userToken');
-      return Object.assign({}, state, { user: null });
+      return Object.assign({}, defaultState);
     case REQUEST_JOIN:
       return Object.assign({}, state, { requestJoin: 'ongoing' });
     case RECIEVE_JOIN:
@@ -60,6 +62,12 @@ function reducer(state = defaultState, action) {
       return Object.assign({}, state, { requestParseImage: 'ongoing' });
     case RECIEVE_PARSE_IMAGE:
       return Object.assign({}, state, { requestParseImage: 'success', imageParsing: action.result });
+    case DELETE_IMAGE_PARSING:
+      return Object.assign({}, state, { imageParsing: null });
+    case RECIEVE_ADD_WORD:
+      const newWordsArr = Array.from(state.words);
+      newWordsArr.push(action.newWord);
+      return Object.assign({}, state, { words: newWordsArr });
     default:
       return state;
   }

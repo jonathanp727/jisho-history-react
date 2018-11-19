@@ -69,7 +69,6 @@
 }
 
 .formCont {
-    padding: 1em;
     position: relative;
     top: -1em;
     z-index: 20;
@@ -78,4 +77,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.button {
+    font-size: .8em;
 }

@@ -180,3 +180,42 @@ export function parseImage(imageData) {
       })
   };
 }
+
+export const DELETE_IMAGE_PARSING = 'DELETE_IMAGE_PARSING';
+export const deleteImageParsing = () => ({
+  type: DELETE_IMAGE_PARSING,
+});
+
+export const RECIEVE_ADD_WORD = 'RECIEVE_ADD_WORD';
+export const recieveAddWord = (newWord) => ({
+  type: RECIEVE_ADD_WORD,
+  newWord
+});
+
+export const addWord = (word, sentence, addLookup) => {
+  return (dispatch, getState) => {
+    return fetch('/api/word', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'x-access-token': getState().api.user.token,
+      },
+      body: JSON.stringify({
+        word,
+        sentence,
+      })
+    }).then(
+        response => response.json(),
+        (err) => console.log(err),
+      )
+      .then(json => {
+        const sentencesArr = [];
+        if(sentence) {
+          sentencesArr.push(sentence);
+        }
+        dispatch(recieveAddWord(json.newWord));
+      })
+  }
+}
+
