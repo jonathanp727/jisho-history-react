@@ -7,7 +7,6 @@ import Home from './scenes/Home';
 import AddWord from './scenes/AddWord';
 import Header from './components/Header';
 import NavDrawer from './components/NavDrawer';
-import Test from './test';
 
 const App = () => (
   <div>

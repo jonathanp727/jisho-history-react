@@ -1,6 +1,9 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
+import SentencesOfWord from '../../../components/SentencesOfWord';
+import styles from './style.css';
+
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 class WordDataPanel extends React.Component {
@@ -61,6 +64,11 @@ class WordDataPanel extends React.Component {
   render() {
     return (
       <div>
+        <div className={styles.sentenceCont}>
+          <div className={styles.sentenceContCont}>
+            <SentencesOfWord sentences={this.props.word.sentences} />
+          </div>
+        </div>
         <Bar data={this.data} options={this.options}/>
       </div>
     )

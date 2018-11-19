@@ -1,0 +1,13 @@
+.cont {
+    margin-top: 1em;
+}
+
+.li {
+    list-style-type: disc;
+    margin-bottom: .5em;
+}
+
+.empty {
+    font-family: 'PT Sans', sans-serif;
+    margin-bottom: 1em;
+}

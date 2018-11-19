@@ -1,0 +1,8 @@
+.sentenceCont {
+    display: flex;
+    justify-content: center;
+}
+
+.sentenceContCont {
+    width: 80%;
+}
