@@ -90,6 +90,7 @@ class NewWordForm extends React.Component {
 
 const mapStateToProps = state => ({
   word: state.ui.token,
+  sentence: state.api.curSentence,
   tokenIndex: state.ui.tokenIndex,
 });
 

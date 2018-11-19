@@ -15,7 +15,8 @@ import {
 
 import {
   SORT_BY_NEW,
-  SORT_BY_TOP
+  SORT_BY_TOP,
+  SELECT_TOKEN,
 } from '../ui/actions';
 
 const defaultState = {
@@ -26,6 +27,9 @@ const defaultState = {
   user: null,
   words: [],
   imageParsing: null,
+  curSentence: null,
+  curSentenceStartIndex: null,
+  curSentenceEndIndex: null,
 }
 
 function reducer(state = defaultState, action) {
@@ -68,6 +72,32 @@ function reducer(state = defaultState, action) {
       const newWordsArr = Array.from(state.words);
       newWordsArr.push(action.newWord);
       return Object.assign({}, state, { words: newWordsArr });
+    case SELECT_TOKEN:
+      // Look for periods on both side and construct sentence
+      const index = action.tokenIndex;
+      let startIndex = null;
+      let sentence = '';
+      let endIndex = null;
+      for(let i = index - 1; i >= 0; i--) {
+        if(state.imageParsing[i].basic_form === '。') {
+          startIndex = i + 1;
+          break;
+        }
+      }
+      if(!startIndex) startIndex = 0;
+
+      for(let i = index + 1; i < state.imageParsing.length; i++) {
+        if(state.imageParsing[i].basic_form === '。') {
+          endIndex = i + 1;
+          break;
+        }
+      }
+      if(!endIndex) endIndex = state.imageParsing.length;
+
+      for(let i = startIndex; i < endIndex; i++) {
+        sentence = sentence + state.imageParsing[i].surface_form;
+      }
+      return Object.assign({}, state, { curSentence: sentence, curSentenceStartIndex: startIndex, curSentenceEndIndex: endIndex });
     default:
       return state;
   }
