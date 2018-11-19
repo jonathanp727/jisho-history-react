@@ -39,7 +39,6 @@ class NewWordForm extends React.Component {
         newState[field] = e.target.checked;
       else 
         newState[field] = e.target.value;
-      console.log(newState);
 
       this.setState(newState);
     };
