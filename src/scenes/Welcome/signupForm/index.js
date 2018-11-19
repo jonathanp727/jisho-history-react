@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 
-import { join } from '../../../services/ui/actions';
+import { join } from '../../../services/api/actions';
 import styles from './style.css';
 
 const SignupFormComponent = ({ handleSubmit, join }) => (
