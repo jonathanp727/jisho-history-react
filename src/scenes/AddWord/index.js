@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 
 import NewWordForm from './components/NewWordForm';
 import UploadPhotoForm from './components/UploadPhotoForm';
+import PostParseForm from './components/PostParseForm';
 import { openManualTab, openPhotoTab } from '../../services/ui/actions';
 
 import styles from './style.css';
 
-const AddWord = ({ usePhoto, openManual, openPhoto }) => (
+const AddWord = ({ usePhoto, openManual, openPhoto, imageParsing }) => (
   <div className={styles.addWordPage}>
     <div className={usePhoto ? styles.bigCont : styles.smallCont}>
       <div className={styles.tabCont}>
@@ -23,7 +24,8 @@ const AddWord = ({ usePhoto, openManual, openPhoto }) => (
       <div className={[styles.tabBottomShadow, usePhoto ? null : styles.bottomShadowRight].join(' ')} />
       <div className={styles.formCont}>
         { !usePhoto && <NewWordForm /> }
-        { usePhoto && <UploadPhotoForm /> }
+        { (usePhoto && !imageParsing) && <UploadPhotoForm /> }
+        { imageParsing && <PostParseForm /> }
       </div>
     </div>
   </div>
@@ -31,6 +33,7 @@ const AddWord = ({ usePhoto, openManual, openPhoto }) => (
 
 const mapStateToProps = state => ({
   usePhoto: state.ui.photoTabOpen,
+  imageParsing: state.api.imageParsing,
 });
 
 const mapDispatchToProps = dispatch => ({

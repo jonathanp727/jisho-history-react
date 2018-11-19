@@ -1,0 +1,39 @@
+.cont {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tokensCont {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    padding-bottom: 1em;
+    overflow: scroll;
+    height: 40%;
+    border-bottom: 1px solid lightgrey;
+}
+
+.token {
+    display: inline-block;
+    padding: .2em .6em;
+    margin: .2em .2em;
+    border-radius: .4em;
+    border: 1px solid lightgrey;
+    background-color: white;
+    cursor: pointer;
+
+    transition: background-color .5s ease-out;
+}
+
+.token:hover {
+    background-color: #f1c183;
+}
+
+.selectedToken {
+    background-color: #ecab56;
+}
+
+.formCont {
+    margin-top: 3em;
+}

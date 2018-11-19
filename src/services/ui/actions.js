@@ -33,3 +33,10 @@ export const OPEN_PHOTO_TAB = 'OPEN_PHOTO_TAB';
 export const openPhotoTab = () => ({
   type: OPEN_PHOTO_TAB,
 });
+
+export const SELECT_TOKEN = 'SELECT_TOKEN';
+export const selectToken = (tokenIndex, token) => ({
+  type: SELECT_TOKEN,
+  tokenIndex,
+  token,
+});

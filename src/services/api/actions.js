@@ -149,3 +149,34 @@ export function join(username, password) {
       });
   };
 }
+
+export const REQUEST_PARSE_IMAGE = 'REQUEST_PARSE_IMAGE';
+export const requestParseImage = () => ({
+  type: REQUEST_PARSE_IMAGE,
+});
+
+export const RECIEVE_PARSE_IMAGE = 'RECIEVE_PARSE_IMAGE';
+export const recieveParseImage = result => ({
+  type: RECIEVE_PARSE_IMAGE,
+  result
+});
+
+export function parseImage(imageData) {
+  return function(dispatch, getState) {
+    dispatch(requestParseImage());
+    return fetch('/api/image/', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'x-access-token': getState().api.user.token,
+      },
+      body: imageData,
+    }).then(
+        response => response.json(),
+        () => dispatch(connectionFailure())
+      )
+      .then(json => {
+        dispatch(recieveParseImage(json.tokens));
+      })
+  };
+}

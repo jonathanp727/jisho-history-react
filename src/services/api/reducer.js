@@ -2,20 +2,13 @@ import {
   CONNECTION_FAILURE,
   REQUEST_USER,
   RECIEVE_USER,
-} from './actions';
-
-import {
   REQUEST_LOGIN,
   RECIEVE_LOGIN,
-} from './actions';
-
-import {
   LOGOUT,
-} from './actions';
-
-import {
   REQUEST_JOIN,
   RECIEVE_JOIN,
+  REQUEST_PARSE_IMAGE,
+  RECIEVE_PARSE_IMAGE,
 } from './actions';
 
 import {
@@ -27,8 +20,10 @@ const defaultState = {
   requestUser: 'pending',
   requestLogin: 'pending',
   requestJoin: 'pending',
+  requestParseImage: 'pending',
   user: null,
   words: [],
+  imageParsing: null,
 }
 
 function reducer(state = defaultState, action) {
@@ -61,6 +56,10 @@ function reducer(state = defaultState, action) {
         return b.count - a.count;
       });
       return Object.assign({}, state);
+    case REQUEST_PARSE_IMAGE:
+      return Object.assign({}, state, { requestParseImage: 'ongoing' });
+    case RECIEVE_PARSE_IMAGE:
+      return Object.assign({}, state, { requestParseImage: 'success', imageParsing: action.result });
     default:
       return state;
   }

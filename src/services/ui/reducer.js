@@ -6,6 +6,7 @@ import {
   CLOSE_NAV_DRAWER,
   OPEN_MANUAL_TAB,
   OPEN_PHOTO_TAB,
+  SELECT_TOKEN,
 } from './actions';
 
 const defaultState = {
@@ -13,6 +14,8 @@ const defaultState = {
   isSortedNew: true,
   navDrawerOpen: false,
   photoTabOpen: false,
+  tokenIndex: null,
+  token: null,
 }
 
 function reducer(state = defaultState, action) {
@@ -34,6 +37,8 @@ function reducer(state = defaultState, action) {
       return Object.assign({}, state, { photoTabOpen: false });
     case OPEN_PHOTO_TAB:
       return Object.assign({}, state, { photoTabOpen: true });
+    case SELECT_TOKEN:
+      return Object.assign({}, state, { tokenIndex: action.tokenIndex, token: action.token });
     default:
       return state;
   }
