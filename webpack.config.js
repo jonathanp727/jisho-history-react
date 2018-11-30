@@ -45,11 +45,14 @@ module.exports = {
   ],
   devServer: {
     contentBase: './dist',
+    host: process.env.IPV4,
+    port: '8080',
     historyApiFallback: true,
     hot: true,
-    proxy: {
-      '/api': 'http://localhost:3000'
-    },
+    proxy: [{
+      path: `/api/**`,
+      target: `http://${process.env.IPV4}:3000`,
+    }],
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
