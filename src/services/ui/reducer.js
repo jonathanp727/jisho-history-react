@@ -7,6 +7,7 @@ import {
   OPEN_MANUAL_TAB,
   OPEN_PHOTO_TAB,
   SELECT_TOKEN,
+  SET_DEVICE_TYPE,
 } from './actions';
 
 const defaultState = {
@@ -16,6 +17,7 @@ const defaultState = {
   photoTabOpen: false,
   tokenIndex: null,
   token: null,
+  isMobile: false,
 }
 
 function reducer(state = defaultState, action) {
@@ -39,6 +41,8 @@ function reducer(state = defaultState, action) {
       return Object.assign({}, state, { photoTabOpen: true });
     case SELECT_TOKEN:
       return Object.assign({}, state, { tokenIndex: action.tokenIndex, token: action.token });
+    case SET_DEVICE_TYPE:
+      return Object.assign({}, state, { isMobile: action.isMobile });
     default:
       return state;
   }

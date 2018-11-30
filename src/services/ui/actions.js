@@ -40,3 +40,9 @@ export const selectToken = (tokenIndex, token) => ({
   tokenIndex,
   token,
 });
+
+export const SET_DEVICE_TYPE = 'SET_DEVICE_TYPE';
+export const setDeviceType = (isMobile) => ({
+  type: SET_DEVICE_TYPE,
+  isMobile,
+});

@@ -7,7 +7,7 @@ import UserHeader from './userheader';
 import styles from './style.css';
 import MenuButton from './MenuButton';
 
-const Header = ({ history, user }) => {
+const Header = ({ history, user, isMobile }) => {
   return (
     <div className={styles.header}>
       <div className={styles.titleCont}>
@@ -15,9 +15,9 @@ const Header = ({ history, user }) => {
         <Link className={styles.title} to='/'>Jisho History</Link>
       </div>
       <Switch>
-        <Route exact path='/' component={user ? UserHeader : LoginHeader}/>
-        <Route path='/signup' component={user ? UserHeader : LoginHeader}/>
-        <Route path='/' component={UserHeader}/>
+        { !isMobile && <Route exact path='/' component={user ? UserHeader : LoginHeader}/>}
+        { !isMobile && <Route path='/signup' component={user ? UserHeader : LoginHeader}/>}
+        <Route path='/' component={user ? UserHeader : null}/>
       </Switch>
     </div>
   )
@@ -25,6 +25,7 @@ const Header = ({ history, user }) => {
 
 const mapStateToProps = state => ({
   user: state.api.user,
+  isMobile: state.ui.isMobile,
 });
 
 export default connect(mapStateToProps)(Header);

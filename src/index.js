@@ -10,8 +10,10 @@ import { connectRouter, routerMiddleware, push, ConnectedRouter } from 'connecte
 
 import App from './App';
 import { fetchUser } from './services/api/actions';
+import { setDeviceType } from './services/ui/actions';
 import uiReducer from './services/ui/reducer';
 import apiReducer from './services/api/reducer';
+import isMobile from './services/mobileCheck';
 import './reset.css'
 
 const loggerMiddleware = createLogger();
@@ -38,6 +40,8 @@ const userId = localStorage.getItem('jisho-history-userId');
 if (userId != null) {
   store.dispatch(fetchUser(userId, localStorage.getItem('jisho-history-userToken')));
 }
+
+store.dispatch(setDeviceType(isMobile));
 
 // Gets rid of material-ui typography deprecation warning
 window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
