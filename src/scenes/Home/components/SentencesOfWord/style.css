@@ -11,3 +11,13 @@
     font-family: 'PT Sans', sans-serif;
     margin-bottom: 1em;
 }
+
+@media only screen and (max-width: 1000px) {
+    .empty {
+        font-size: 3em;
+    }
+
+    .li {
+        font-size: 3em;
+    }
+}

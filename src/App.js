@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Welcome from './scenes/Welcome';
 import Home from './scenes/Home';
 import AddWord from './scenes/AddWord';
+import TakePhoto from './scenes/TakePhoto';
 import Header from './components/Header';
 import NavDrawer from './components/NavDrawer';
 
@@ -18,6 +19,7 @@ const App = () => (
       <Route path='/login' component={Welcome}/>
       <Route path='/home' component={Home}/>
       <Route path='/new' component={AddWord}/>
+      <Route path='/photo' component={TakePhoto}/>
     </Switch>
   </div>
 )

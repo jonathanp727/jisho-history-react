@@ -18,3 +18,14 @@
     font-size: 1.2em;
     font-family: 'PT Sans', sans-serif;
 }
+
+@media only screen and (max-width: 1000px) {
+    .name {
+        font-size: 6em;
+        margin-left: .4em;
+        margin: .5em .4em;
+    }
+    .cont {
+        margin-bottom: 1em;
+    }
+}

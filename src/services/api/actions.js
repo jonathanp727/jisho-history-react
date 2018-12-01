@@ -43,6 +43,9 @@ export function fetchUser(userId, userToken) {
             return b.latestIncrement - a.latestIncrement;
           });
           dispatch(recieveUser(json, userToken));
+          if(!getState().ui.isMobile) {
+            getState().api.socket.emit('userId', json._id);
+          }
         }
       });
   };
@@ -93,7 +96,10 @@ export function login(username, password) {
           });
           
           dispatch(recieveLogin(json));
-          dispatch(push('/home'));                                            // REDIRECT TO HOME
+          if(!getState().ui.isMobile) {
+            getState().api.socket.emit('userId', json._id);
+          }
+          dispatch(push('/home'));                                          // REDIRECT TO HOME
         }
       });
   };
@@ -144,6 +150,9 @@ export function join(username, password) {
           localStorage.setItem('jisho-history-userToken', json.token);
           
           dispatch(recieveJoin(json, username));
+          if(!getState().ui.isMobile) {
+            getState().api.socket.emit('userId', json.id);
+          }
           dispatch(push('/home'));                                          // REDIRECT TO HOME
         }
       });
@@ -219,3 +228,33 @@ export const addWord = (word, sentence, addLookup) => {
   }
 }
 
+export const OPEN_SOCKET = 'OPEN_SOCKET';
+export const openSocket = socket => ({
+  type: OPEN_SOCKET,
+  socket,
+});
+
+export function uploadPhoto(imageData) {
+  return function(dispatch, getState) {
+    return fetch('/api/image/upload', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'x-access-token': getState().api.user.token,
+      },
+      body: imageData,
+    }).then(
+        response => response.json(),
+        () => dispatch(connectionFailure())
+      )
+      .then(json => {
+        dispatch(push('/home'));   
+      })
+  };
+}
+
+export const RECIEVE_TOKENS_FROM_MOBILE = 'RECIEVE_TOKENS_FROM_MOBILE';
+export const recieveTokensFromMobile = tokens => ({
+  type: RECIEVE_TOKENS_FROM_MOBILE,
+  tokens,
+});

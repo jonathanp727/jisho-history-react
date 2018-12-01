@@ -58,5 +58,9 @@ module.exports = {
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
       'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
     }
-  }
+  },
+  node: {
+    fs: 'empty',
+    uws: 'empty',
+  },
 };

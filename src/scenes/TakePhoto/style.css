@@ -1,3 +1,20 @@
+.form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 60vh;
+    align-items: center;
+}
+
+.input {
+    font-size: 3em;
+}
+
+.image {
+    width: 100%;
+}
+
 .button {
     font-family: "Helvetica Neue", Helvetica, sans-serif;
     border: none;
@@ -5,7 +22,7 @@
     border-radius: 3px;
     margin-right: .3em;
 
-    font-size: 1.1em;
+    font-size: 3em;
     background-color: #8abd83;
     height: 1.8em;
     padding: 0 1em;
@@ -26,10 +43,4 @@
 
 .button:hover, .button:focus {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
-}
-
-@media only screen and (max-width: 1000px) {
-    .button {
-        font-size: 3em;
-    }
 }

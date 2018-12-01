@@ -22,7 +22,8 @@
     "redux-form": "^7.4.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "rmc-drawer": "^0.4.11"
+    "rmc-drawer": "^0.4.11",
+    "socket.io-client": "^2.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

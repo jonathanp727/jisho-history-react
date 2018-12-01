@@ -10,6 +10,11 @@ import {
   SET_DEVICE_TYPE,
 } from './actions';
 
+import {
+  RECIEVE_TOKENS_FROM_MOBILE,
+  RECIEVE_ADD_WORD,
+} from '../api/actions';
+
 const defaultState = {
   curWord: null,
   isSortedNew: true,
@@ -43,6 +48,10 @@ function reducer(state = defaultState, action) {
       return Object.assign({}, state, { tokenIndex: action.tokenIndex, token: action.token });
     case SET_DEVICE_TYPE:
       return Object.assign({}, state, { isMobile: action.isMobile });
+    case RECIEVE_TOKENS_FROM_MOBILE:
+      return Object.assign({}, state, { photoTabOpen: true });
+    case RECIEVE_ADD_WORD:
+      return Object.assign({}, state, { token: null, tokenIndex: null });
     default:
       return state;
   }

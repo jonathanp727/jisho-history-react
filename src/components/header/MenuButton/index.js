@@ -2,11 +2,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import { withStyles } from '@material-ui/core/styles';
 
 import { openNavDrawer } from '../../../services/ui/actions';
 import styles from './style.css';
 
-const MenuButton = ({ isLoggedIn, openNavDrawer }) => {
+const classes = theme => ({
+  icon: {
+     [theme.breakpoints.between('sm', 'md')]: {
+      fontSize: '4em',
+      marginLeft: '.2em',
+    },
+  },
+});
+
+const MenuButton = ({ isLoggedIn, openNavDrawer,  classes}) => {
   if(!isLoggedIn) {
     return null;
   }
@@ -14,7 +24,9 @@ const MenuButton = ({ isLoggedIn, openNavDrawer }) => {
     <IconButton
       onClick={() => openNavDrawer()}
     >
-      <MenuIcon />
+      <MenuIcon
+        className={classes.icon}
+      />
     </IconButton>
   );
 }
@@ -27,4 +39,4 @@ const mapDispatchToProps = dispatch => ({
   openNavDrawer: () => dispatch(openNavDrawer()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MenuButton);
+export default withStyles(classes)(connect(mapStateToProps, mapDispatchToProps)(MenuButton));

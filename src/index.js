@@ -7,9 +7,10 @@ import { createLogger } from 'redux-logger';
 import { reducer as formReducer } from 'redux-form';
 import { createBrowserHistory } from 'history';
 import { connectRouter, routerMiddleware, push, ConnectedRouter } from 'connected-react-router';
+import openSocket from 'socket.io-client';
 
 import App from './App';
-import { fetchUser } from './services/api/actions';
+import * as apiActions from './services/api/actions';
 import { setDeviceType } from './services/ui/actions';
 import uiReducer from './services/ui/reducer';
 import apiReducer from './services/api/reducer';
@@ -35,16 +36,25 @@ const store = createStore(
   )
 );
 
-// If already logged in, go to user homepage
-const userId = localStorage.getItem('jisho-history-userId');
-if (userId != null) {
-  store.dispatch(fetchUser(userId, localStorage.getItem('jisho-history-userToken')));
-}
-
 store.dispatch(setDeviceType(isMobile));
 
 // Gets rid of material-ui typography deprecation warning
 window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
+
+const socket = openSocket('http://192.168.1.115:3000');
+store.dispatch(apiActions.openSocket(socket));
+socket.on('connect', () => {
+  socket.on('tokens', (data) => {
+    store.dispatch(apiActions.recieveTokensFromMobile(data));
+    store.dispatch(push('/new'));
+  });
+});
+
+// If already logged in, go to user homepage
+const userId = localStorage.getItem('jisho-history-userId');
+if (userId != null) {
+  store.dispatch(apiActions.fetchUser(userId, localStorage.getItem('jisho-history-userToken')));
+}
 
 ReactDOM.render(
   <Provider store={store}>

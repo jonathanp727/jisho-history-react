@@ -2,3 +2,9 @@
     margin-top: .6em;
     width: 250px;
 }
+
+@media only screen and (max-width: 1000px) {
+    .menu {
+        width: 80vw;
+    }
+}

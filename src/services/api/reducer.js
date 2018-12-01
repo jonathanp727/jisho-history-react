@@ -11,6 +11,8 @@ import {
   RECIEVE_PARSE_IMAGE,
   DELETE_IMAGE_PARSING,
   RECIEVE_ADD_WORD,
+  OPEN_SOCKET,
+  RECIEVE_TOKENS_FROM_MOBILE,
 } from './actions';
 
 import {
@@ -30,6 +32,7 @@ const defaultState = {
   curSentence: null,
   curSentenceStartIndex: null,
   curSentenceEndIndex: null,
+  socket: null,
 }
 
 function reducer(state = defaultState, action) {
@@ -98,6 +101,10 @@ function reducer(state = defaultState, action) {
         sentence = sentence + state.imageParsing[i].surface_form;
       }
       return Object.assign({}, state, { curSentence: sentence, curSentenceStartIndex: startIndex, curSentenceEndIndex: endIndex });
+    case OPEN_SOCKET:
+      return Object.assign({}, state, { socket: action.socket });
+    case RECIEVE_TOKENS_FROM_MOBILE:
+      return Object.assign({}, state, { requestParseImage: 'success', imageParsing: action.tokens });
     default:
       return state;
   }
