@@ -9,7 +9,7 @@ import styles from './style.css';
 
 const classes = theme => ({
   icon: {
-     [theme.breakpoints.between('sm', 'md')]: {
+     [theme.breakpoints.only('sm')]: {
       fontSize: '4em',
       marginLeft: '.2em',
     },

@@ -1,0 +1,23 @@
+.cont {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5em;
+    margin-bottom: 4em;
+}
+
+.button {
+    background-color: #ecab56;
+    padding: 2px 2em;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.grey {
+    background-color: grey;
+}
+
+.grey:hover, .grey:focus {
+    box-shadow: none;
+    cursor: default;
+}

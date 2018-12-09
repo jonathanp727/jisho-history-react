@@ -258,3 +258,9 @@ export const recieveTokensFromMobile = tokens => ({
   type: RECIEVE_TOKENS_FROM_MOBILE,
   tokens,
 });
+
+export const SEARCH_WORDS = 'SEARCH_WORDS';
+export const searchWords = query => ({
+  type: SEARCH_WORDS,
+  query,
+})

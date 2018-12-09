@@ -13,6 +13,7 @@ import {
   RECIEVE_ADD_WORD,
   OPEN_SOCKET,
   RECIEVE_TOKENS_FROM_MOBILE,
+  SEARCH_WORDS,
 } from './actions';
 
 import {
@@ -28,6 +29,7 @@ const defaultState = {
   requestParseImage: 'pending',
   user: null,
   words: [],
+  curWords: [],
   imageParsing: null,
   curSentence: null,
   curSentenceStartIndex: null,
@@ -42,11 +44,11 @@ function reducer(state = defaultState, action) {
     case REQUEST_USER:
       return Object.assign({}, state, { requestUser: 'ongoing' });
     case RECIEVE_USER:
-      return Object.assign({}, state, { requestUser: 'success', user: action.user, words: action.words });
+      return Object.assign({}, state, { requestUser: 'success', user: action.user, words: action.words, curWords: action.words });
     case REQUEST_LOGIN:
       return Object.assign({}, state, { requestLogin: 'ongoing'});
     case RECIEVE_LOGIN:
-      return Object.assign({}, state, { requestLogin: 'success', user: action.user, words: action.words });
+      return Object.assign({}, state, { requestLogin: 'success', user: action.user, words: action.words, curWords: action.words });
     case LOGOUT:
       localStorage.removeItem('jisho-history-userId');
       localStorage.removeItem('jisho-history-userToken');
@@ -54,7 +56,7 @@ function reducer(state = defaultState, action) {
     case REQUEST_JOIN:
       return Object.assign({}, state, { requestJoin: 'ongoing' });
     case RECIEVE_JOIN:
-      return Object.assign({}, state, { requestJoin: 'success', user: action.user, words: [] });
+      return Object.assign({}, state, { requestJoin: 'success', user: action.user, words: [], curWords: [] });
     case SORT_BY_NEW:
       state.words.sort((a, b) => {
         return b.latestIncrement - a.latestIncrement;
@@ -74,7 +76,7 @@ function reducer(state = defaultState, action) {
     case RECIEVE_ADD_WORD:
       const newWordsArr = Array.from(state.words);
       newWordsArr.push(action.newWord);
-      return Object.assign({}, state, { words: newWordsArr });
+      return Object.assign({}, state, { words: newWordsArr, curWords: newWordsArr });
     case SELECT_TOKEN:
       // Look for periods on both side and construct sentence
       const index = action.tokenIndex;
@@ -105,6 +107,11 @@ function reducer(state = defaultState, action) {
       return Object.assign({}, state, { socket: action.socket });
     case RECIEVE_TOKENS_FROM_MOBILE:
       return Object.assign({}, state, { requestParseImage: 'success', imageParsing: action.tokens });
+    case SEARCH_WORDS:
+      const newCurWords = state.words.filter(word => {
+        return word.word.includes(action.query);
+      });
+      return Object.assign({}, state, { curWords: Array.from(newCurWords)});
     default:
       return state;
   }

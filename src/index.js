@@ -41,7 +41,7 @@ store.dispatch(setDeviceType(isMobile));
 // Gets rid of material-ui typography deprecation warning
 window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
 
-const socket = openSocket('http://192.168.1.115:3000');
+const socket = openSocket(`http://${process.env.IPV4}:3000`);
 store.dispatch(apiActions.openSocket(socket));
 socket.on('connect', () => {
   socket.on('tokens', (data) => {

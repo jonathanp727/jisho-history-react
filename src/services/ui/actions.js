@@ -46,3 +46,9 @@ export const setDeviceType = (isMobile) => ({
   type: SET_DEVICE_TYPE,
   isMobile,
 });
+
+export const CHANGE_PAGE_INDEX = 'CHANGE_PAGE_INDEX';
+export const changePageIndex = (delta) => ({
+  type: CHANGE_PAGE_INDEX,
+  delta,
+});

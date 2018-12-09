@@ -8,6 +8,7 @@ import {
   OPEN_PHOTO_TAB,
   SELECT_TOKEN,
   SET_DEVICE_TYPE,
+  CHANGE_PAGE_INDEX,
 } from './actions';
 
 import {
@@ -23,6 +24,8 @@ const defaultState = {
   tokenIndex: null,
   token: null,
   isMobile: false,
+  wordsListPageIndex: 0,
+  pageSize: 50,
 }
 
 function reducer(state = defaultState, action) {
@@ -33,9 +36,9 @@ function reducer(state = defaultState, action) {
       else
         return Object.assign({}, state, { curWord: action.word });
     case SORT_BY_NEW:
-      return Object.assign({}, state, { isSortedNew: true });
+      return Object.assign({}, state, { isSortedNew: true, wordsListPageIndex: 0 });
     case SORT_BY_TOP:
-      return Object.assign({}, state, { isSortedNew: false });
+      return Object.assign({}, state, { isSortedNew: false, wordsListPageIndex: 0 });
     case OPEN_NAV_DRAWER:
       return Object.assign({}, state, { navDrawerOpen: true });
     case CLOSE_NAV_DRAWER:
@@ -52,6 +55,8 @@ function reducer(state = defaultState, action) {
       return Object.assign({}, state, { photoTabOpen: true });
     case RECIEVE_ADD_WORD:
       return Object.assign({}, state, { token: null, tokenIndex: null });
+    case CHANGE_PAGE_INDEX:
+      return Object.assign({}, state, { wordsListPageIndex: state.wordsListPageIndex + action.delta });
     default:
       return state;
   }
